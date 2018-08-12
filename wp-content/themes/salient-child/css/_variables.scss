@@ -1,0 +1,39 @@
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ Variables
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+// Responsive Settings
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+$mobile-container-width             : 90%;
+
+// Breakpoints
+$desktop-only                       : 'min-width: 1001px';
+$mobile-only                        : 'max-width: 1000px';
+
+
+// Spacing
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+$list-spacing                       : 10px; // bottom margin
+$breadcrumb-spacing					: 24px; // on top and bottom
+$header-spacing						: 20px; // header margin bottom
+
+
+// Typography
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+$font-weight-normal					: 400;
+$font-weight-bold					: 600;
+
+
+// Colors
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+$purple                             : #6f57a4;
+$gray						        : #f6f5f5;
+$black						        : #404041;
+$white  					        : #fff;
+
+$grey-01							: #363636;
+$grey-02							: #676767;
+$grey-03							: #333333;
+
+// Applied Colors
+$text-color		                    : $grey-01;

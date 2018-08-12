@@ -1,0 +1,540 @@
+/*!
+Theme Name: Salient Child Theme
+Description: Custom styles for livhome.com
+Author: Zak Posner
+Template: salient
+Version: 0.1
+*/
+
+@import 'mixins';
+@import 'variables';
+@import 'utilities';
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    General
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* Font display optimization */
+body {
+  text-rendering: optimizeLegibility;
+  text-rendering: geometricPrecision;
+  font-smooth: always;
+  color: $text-color;
+
+  font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+
+// Mobile Container
+html body .container-wrap .container {
+  @media screen and ($mobile-only) {
+    max-width: $mobile-container-width !important;
+  } 
+}
+
+
+
+html body,
+html body .full-width-section > .col.span_12.dark {
+
+  // Header Spacing
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: $header-spacing;
+  }
+
+  // Text Color
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ul li,
+  ol li,
+  p { color: $text-color; }
+
+  // Plain text links
+  * a:not(.nectar-button) {
+    color: $purple;
+    text-decoration: underline;
+
+    &:hover { color: $text-color; }
+  }
+
+  // No underline in menus
+  .menu-item a,
+  #search-btn a { text-decoration: none !important; }
+
+  strong, b { font-weight: $font-weight-bold !important; }
+
+}
+
+html body p,
+html body .wpb_text_column {
+  a:not(.nectar-button) { text-decoration: underline; }
+}
+
+// List Spacing
+.nectar-fancy-ul ul li,
+.main-content ol li,
+.main-content ul li { margin-bottom: $list-spacing; }
+
+
+// Quote style overrides
+.nectar_single_testimonial .inner p {
+	color: $purple !important;
+}
+
+// Breadcrumbs
+p#breadcrumbs {
+  font-size: 16px !important;
+  line-height: 1 !important;
+  margin-bottom: $breadcrumb-spacing !important;
+  padding-bottom: 0 !important;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Buttons
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* Both Buttons */
+.cta-primary,
+.cta-secondary {
+  	&, &.nectar-button {
+	  	white-space: normal;
+	  	overflow:visible;
+	  	font-size: 1.2em !important;
+	  	font-weight: 300 !important;
+	  	padding: 5px 15px !important;
+	  	cursor: pointer !important;
+  	}
+}
+
+/* Primary Button */
+.cta-primary,
+.nectar-button.cta-primary,
+.wpb_content_element .nextar-button.cta-primary {
+	text-transform: none !important;
+	letter-spacing: normal !important;
+	font-weight: 300 !important;
+	text-align: center !important;
+	line-height: 46px;
+	margin-bottom: 0 !important;
+	border: 2px solid rgba(111,87,164, 1); /* == #6f57a4 */
+	background-color: rgba(111,87,164, 1);
+	border-radius: 3px !important;
+	color: #fff !important;
+	@include lh-transition;
+
+  	&:hover {
+    	border: 2px solid rgba(111,87,164, 0.85) !important;
+   		background-color: rgba(111,87,164, 0.85) !important;
+  	}
+  	&:disabled {
+    	cursor:not-allowed;
+  	}
+}
+
+/* "cta-primary button should span full width on mobile" */
+@media screen and (max-width: 827px) {
+  .cta-primary,
+  .nectar-button.cta-primary {
+    width: 80% !important;
+  }
+}
+
+@media screen and (max-width: 667px) {
+  .cta-primary,
+  .nectar-button.cta-primary {
+    width: 100% !important;
+  }
+}
+
+/* Secondary Buttons */
+.cta-secondary,
+.nectar-button.cta-secondary {
+  color:  $purple;
+  position: relative !important;
+  line-height: 36px !important;
+  background-color: rgba(0,0,0,0) !important;
+  border-radius: 0 !important;
+  border: none !important;
+  outline: none !important;
+  @include lh-transition;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: $purple;
+    visibility: hidden;
+    /* Animated Underline */
+    transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+    -moz-transform: scaleX(0);
+    -o-transform: scaleX(0);
+    @include lh-transition;
+  }
+
+  &:hover {
+    color: $purple !important;
+  }
+
+  &:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+    -webkit-transform: scaleX(1);
+    -moz-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Components
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* === Side Menu === */
+
+.side-menu-item { 
+	p { margin: 0 !important; }
+
+	a {
+		margin: 0 !important;
+		padding: 1rem;
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+		color: #404041;
+		border-bottom: 1px solid #E0E0E0;
+		background-color: #f1eeef;
+		@include lh-transition;
+
+  		&:hover {
+    		background-color: $purple;
+    		color: #FFF !important;
+  		}
+	}
+}
+
+/* === lh-cta-box === */
+
+/* TABLETS & UP */
+@media screen and (min-width: 800px) {
+  .lh-cta-box .cta-secondary {
+    margin-left: 10px !important;
+  }
+}
+
+/* PHONES & SMALL TABS */
+@media screen and (max-width:667px) {
+	.lh-cta-box .cta-primary,
+  	.lh-cta-box .cta-secondary {
+    	width: 100% !important;
+  	}
+  	.lh-cta-box .cta-primary {
+    	margin-bottom: 20px !important;
+  	}
+}
+
+/* === Looking for Something === */
+.looking-for-something {
+	padding: 100px 0;
+
+	.looking-text-box {
+		text-align: center;
+  		margin-bottom: 3rem;
+
+  		&, h2, p { color: $white !important; }
+	}
+
+	.looking-form {
+  		text-align: center;
+
+  		.cta-primary {
+  			margin: 0;
+  		}
+	}
+}
+
+/* Full width image - icon box styles */
+.custom-iconbox {
+	text-align: center;
+	padding: 15% 9% 9% 9%;
+	min-height: 375px;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	@include lh-transition;
+
+	p { margin-bottom: 5px; }
+	.cta-secondary { margin-left: 0!important; }
+	.w-iconbox-text { margin-bottom: 15px; }
+
+	i {
+		font-size: 2rem;
+  		color: $purple;
+	}
+
+	&:hover {
+		box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	}
+}
+
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Header
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+.lh-header-call-link {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  z-index: 2000;
+  @include prefix(transform, translateY(-50%));
+
+  i.fa-phone {
+    color: $purple;
+    font-size: 25px;
+    line-height: 25px;
+  }
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Caregiver Application Popup
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+// not currently in use
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    #forms
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+body.page form.wpcf7-form {
+
+	input[type="text"],
+	input[type="email"],
+	input[type="tel"],
+	textarea {
+		@include lh-transition;
+		font-size: 20px !important;
+
+		&:focus {
+			border-color: $purple !important;
+			@include light-purple(background-color, 0.1);
+		}
+	}
+
+	input[type="submit"] {
+		@extend .cta-primary;
+		min-width: 300px !important;
+	}
+}
+
+
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    #navigation
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+header#top .col.span_9 ul.sf-menu li.menu-item > a { cursor: pointer !important; }
+
+// mobile nav
+#slide-out-widget-area .inner .off-canvas-menu-container {
+	ul.menu {
+    // padding-left: 20px !important;
+
+		li.menu-item {
+
+      >a {
+        @include lh-transition;
+        padding: 5% 0 !important;
+        font-size: 30px !important;
+        color: $purple !important;
+        line-height: 1 !important;
+        // text-align: left !important;
+
+        &:hover {
+          background: $purple !important;
+          color: $white !important;
+        }
+      }
+
+		}
+	}
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Page: #home
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* === Hero Image Text === */
+
+.rev-primary .cta-primary,
+.rev-primary .cta-secondary,
+.rev-connect .cta-primary {
+  line-height: 46px !important;
+}
+
+.rev-primary p,
+.rev-connect p {
+  color: #404041 !important;
+  font-size: 22px !important;
+  font-weight: 300 !important;
+  line-height: 1.6 !important;
+}
+
+/* === Mobile Hero Image Text === */
+
+.rev-mobile-slide {
+  background-color: #f6f5f5;
+  padding: 35px 10px 35px 10px;
+  text-align: center;
+}
+
+/*  PHONES ONLY */
+@media screen and (max-width: 567px) {
+  /* pad the content */
+  .rev-connect-mobile p {
+    padding: 0 20px;
+  }
+  /* stack & center the cta's */
+  .rev-primary-mobile .button-box button {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 1001px) {
+  .livhome-mobile-only { display: none !important; } // 
+}
+
+/* PHONES AND TABLETS */
+@media only screen and (max-width: 1000px) {
+
+  .livhome-desktop-only { display: none !important; }
+
+  /* Hide the normal slide ctas */
+  .rev-primary,
+  .rev-connect {
+    visibility: hidden;
+  }
+  .rev-primary h2,
+  .rev-connect h2 {
+    padding-bottom: 15px;
+  }
+  .rev-primary-mobile h1 {
+    /*font-size: 19px !important;
+    line-height: 32px !important;*/
+  }
+  .rev-primary-mobile p,
+  .rev-connect-mobile p {
+    margin-bottom: 3rem; /* default was 1.5em */
+  }
+  .rev-primary-mobile .cta-primary,
+  .rev-connect-mobile .cta-primary {
+    width: 100%;
+    margin-bottom: 30px !important;
+  }
+  /* Hide arrows */
+  #rev_slider_2_1 .tparrows {
+    display: none !important;
+  }
+}
+
+/* TABLETS ONLY */
+@media screen and (min-width: 650px) {
+  /* bring the mobile slide text into the center */
+  .rev-mobile-slide p {
+    padding: 0 40px;
+  }
+  .rev-primary-mobile .cta-primary,
+  .rev-connect-mobile .cta-primary {
+    width: 80%;
+  }
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    #blog - Blog List Page
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+// individual listing
+body.blog article.post {
+
+  // Post Title
+  .title a:hover { color: $text-color !important; }
+
+  // Meta Links
+  .more-link,
+  .post-header a { text-decoration: none !important; }
+
+  // Comment Counts
+  .nectar-love-wrap,
+  .meta-comment-count { display: none !important; }
+
+  // Continue Reading
+  span.continue-reading {
+    @extend .cta-primary;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-weight: $font-weight-bold !important;
+    font-size: 12px !important;
+    letter-spacing: 2px;
+    padding: 13px 18px;
+    position: relative;
+    line-height: 20px;
+    &:hover {
+      background-color: lighten($purple, 10%) !important;
+    }
+  }
+}
+
+// Smaller post titles on mobile
+@media screen and ($mobile-only) {
+  body.blog .post-header .title {
+    font-size: 24px !important;
+    line-height: normal !important;
+  }
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Posts
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+body.single .blog-title #single-meta { display: none; }
+
+body.single .heading-title {
+  margin-bottom: $breadcrumb-spacing !important;
+  padding-bottom: $breadcrumb-spacing !important;
+
+  // Actual title text
+  .entry-title {
+    font-family: 'Open Sans' !important;
+    font-size: 54px !important;
+    font-weight: $font-weight-bold !important;
+    margin-bottom: $header-spacing !important;
+
+    @media screen and ($mobile-only) {
+      font-size: 36px !important;
+    }
+  }
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Footer
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+#footer-outer #social a {
+  text-decoration: none !important;
+}
+

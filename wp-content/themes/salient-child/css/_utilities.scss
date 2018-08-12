@@ -1,0 +1,120 @@
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Utility Classes
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+// Mobile Collapse Columns
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+//  Used to bring multiple list columns together with no internal margin
+//  or padding on mobile screens only
+html body .mobile-collapse-columns .col.span_12 > .wpb_column {
+  @media screen and (max-width: 689px) {
+
+    &:not(:first-child) {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    ul,
+    .nectar-fancy-ul,
+    ol { margin-bottom: 0 !important; }
+  }
+}
+
+// Inline Logo Row
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+//  Used line up several items in a row and center them
+.inline-logo-row .wpb_wrapper {
+  @include display-flexbox;
+  @include align-items(center);
+
+  .wpb_text_column,
+  .nectar_icon_wrap {
+    display: inline-block !important;
+  }
+
+  .nectar_icon_wrap {
+    margin: 0 10px 0 0 !important;
+  }
+
+}
+
+// Livhome BW Images
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+//  grayscale image class
+.livhome-bw-images img {  // black and white images
+    -webkit-filter: grayscale(100%) !important;
+            filter: grayscale(100%) !important;
+}
+
+// Full Width Classes
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+.lh-full-width { width: 100%; } // full width elements
+
+.full-width-all {
+  @include fill-width;
+}
+
+.full-width-phones {
+  @media screen and (max-width: 689px) {
+    @include fill-width;
+  }
+}
+
+.full-width-tablets {
+  @media screen and (min-width: 690px) and ($mobile-only) {
+    @include fill-width;
+  }
+}
+
+.full-width-mobile {
+  @media screen and ($mobile-only) {
+    @include fill-width;
+  }
+}
+
+// Alignment
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+.lh-centered { text-align: center; } // force centered text
+
+// Colors
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+.lh-white { color: #FFF !important; } // force white text
+
+.lh-bg-white { background-color: #FFF !important; } // force white bg
+
+.lh-iconbox { background-color: #FFF !important; }
+
+.lh-form-error { border: 1px solid #F44336 !important; }
+
+// Misc
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+.text-padder { padding: 0 120px; }
+
+@media screen and (max-width: 800px) {
+  .text-padder { padding: 0 20px; }
+  .lh-mobile-vert { margin-bottom: 50px !important; }
+}
+
+.arrow-hover {  
+  position: relative;
+
+  &::after {
+    @include lh-transition;
+    content: "\f061";
+    font-family: FontAwesome;
+    font-size: 0.7em;
+    position: absolute;
+    left: 102%;
+    opacity: 0;
+  }
+
+  &:hover::after {
+    left: 105%;
+    opacity: 1;
+  }
+}

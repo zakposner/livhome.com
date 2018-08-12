@@ -1,0 +1,6 @@
+/wp-content/themes/salient-child/node_modules
+/wp-content/themes/salient
+/wp-content/uploads
+.vscode
+old-sftp-config.json
+sftp-config.json

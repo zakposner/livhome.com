@@ -20,10 +20,10 @@ gulp.task('parseScss', function() {
 	return gulp
 		.src('css/**/*.scss')
 		.pipe(sourcemaps.init())
-        .pipe(sass(sassOptions).on('error', sass.logError))
-        .pipe(autoprefixer(autoprefixerOptions))
-        .pipe(sourcemaps.write('./css'))
-        .pipe(gulp.dest('./'))
+    .pipe(sass(sassOptions).on('error', sass.logError))
+    .pipe(autoprefixer(autoprefixerOptions))
+    .pipe(sourcemaps.write('./css'))
+    .pipe(gulp.dest('./'))
 });
 
 // Watch .scss files for compilation

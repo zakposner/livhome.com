@@ -1,0 +1,38 @@
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Footer
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+#footer-outer #social a {
+  text-decoration: none !important;
+}
+
+#footer-outer .col p {
+  color: $white !important;
+}
+
+#footer-widgets .container > .row { padding-bottom: 0 !important; }
+
+#footer-widgets,
+#copyright { background-color: #363636 !important; }
+
+#footer-outer #copyright { 
+	border: none !important; 
+	font-size: 16px !important;
+
+	p { color: #ccc !important; }
+}
+
+#footer-widgets .col.span_4 {
+
+	p { color: #ccc !important; }
+
+	h4 {
+		color: $white !important;
+		padding-bottom: 12px;
+		border-bottom: 2px solid #777;
+	}
+
+	a:hover { color: #bedc8f !important; }
+}
+
+// </br>LivHOME Corporate Office</br>5670 Wilshire Boulevard Suite 500, Los Angeles, CA 90036 </br>Call (800) 807-5854 </br> <a href="https://www.livhome.com/privacy-policy/">Privacy policy</a>

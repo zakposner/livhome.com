@@ -11,19 +11,6 @@ $desktop-only                       : 'min-width: 1001px';
 $mobile-only                        : 'max-width: 1000px';
 
 
-// Spacing
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-$list-spacing                       : 10px; // bottom margin
-$breadcrumb-spacing					: 24px; // on top and bottom
-$header-spacing						: 20px; // header margin bottom
-
-
-// Typography
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-$font-weight-normal					: 400;
-$font-weight-bold					: 600;
-
-
 // Colors
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 $purple                             : #6f57a4;
@@ -37,3 +24,44 @@ $grey-03							: #333333;
 
 // Applied Colors
 $text-color		                    : $grey-01;
+
+
+// Spacing
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+$list-spacing                       : 8px; // bottom margin
+
+$breadcrumb-spacing					: 24px; // on top and bottom
+
+$header-spacing						: 20px; // header margin bottom
+
+
+// Typography
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+$font-weight-normal					: 400;
+$font-weight-bold					: 600;
+
+$breadcrumbs-font-size				: 13px;
+
+
+// Buttons
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+$button-font-size					: 1rem;
+$button-font-weight					: 400;
+$button-padding						: 20px 25px;
+$button-text-transform 				: capitalize;
+$button-letter-spacing				: 2px;
+$button-color						: $white;
+$button-ghost-color					: $purple;
+$button-border-radius				: 4px; // rounded: 200px
+
+
+// Forms
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+$form-border-color					: #DDD;
+
+// Announcement Bar
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+$abar-bg							: $purple;
+$abar-font-size						: 16px;
+$abar-cta-1-bg						: #f3f2f7;
+$abar-cta-2-bg						: #bedc8f;

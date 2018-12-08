@@ -1,0 +1,201 @@
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Forms
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+body.page form.wpcf7-form {
+
+  .form-wrap-half {
+    @media screen and ($desktop-only) {
+      display: inline-block;
+      width: 49%;
+
+      &.form-wrap-half--first {
+        margin-right: 1.2%;
+      }
+    }
+  }
+
+	input[type="text"],
+	input[type="email"],
+	input[type="tel"] {
+		@include lh-transition;
+		font-size: 20px !important;
+    border: 0 !important;
+    border-bottom: 2px solid $form-border-color !important;
+
+		&:focus {
+			border-color: $purple !important;
+			@include light-purple(background-color, 0.05);
+		}
+	}
+
+  textarea {
+    @include lh-transition;
+    font-size: 20px !important;
+    border: 2px solid $form-border-color !important;
+    height: 150px;
+
+    &:focus {
+      border-bottom-color: $purple !important;
+      @include light-purple(background-color, 0.05);
+    }
+  }
+
+  label { 
+    display: block !important;
+    margin-bottom: 10px;
+    color: #444;
+    letter-spacing: 1px;
+    // font-size: 15px;
+  }
+
+  br { display: none !important; }
+
+  p { padding-bottom: 0 !important; }
+
+  .SendMeEmailUpdates { display: inline-block !important; }
+
+	.wpcf7-submit[type="submit"] {
+		@extend .cta-primary;
+		min-width: 300px !important;
+    height: auto !important;
+    line-height: 1 !important;
+    width: auto !important;
+	}
+
+  // Availability Blocks (Apply Form)
+  .avail-block {
+    display: inline-block;
+    margin-bottom: 10px;
+    min-width: 24%;
+
+    &:last-of-type { margin-bottom: 30px; }
+
+    span.wpcf7-list-item {
+      display: block !important;
+      margin: 0 !important;
+    }
+  }
+}
+
+body[data-fancy-form-rcs="1"] .select2-container .select2-choice {
+  border-color: $form-border-color !important;
+}
+
+
+// -=-=-=-=-=- Multi Page Forms -=-=-=-=-=-
+
+// JS Only Functionality
+html.js body .multiform__wrap .multiform__part {
+  transition: opacity 0.3s ease;
+  position: relative;
+  display: none;
+  opacity: 0;
+  right: 20px;
+
+  &.multiform__part--active {
+    right: 0;
+    display: block;
+    opacity: 1;
+  }
+}
+
+.multiform__status {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  height: 10px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #eee;
+
+  .multiform__status-bar {
+    transition: right 0.35s ease-in-out;
+    right: 0;
+    height: 10px;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    width: 100%;
+    background-color: $purple;
+  }
+}
+
+.multiform__status-wrap {
+  position: relative;
+  margin-bottom: 36px;
+}
+
+.multiform__status-name {
+  position: absolute;
+  top:100%;
+  display: none;
+  left: 0 !important; // turn off to allow status based positioning
+  color: #666;
+  letter-spacing: 1px;
+  font-size: 18px;
+
+  &.multiform__status-name--active {
+    display: block;
+  }
+}
+
+html body .multiform__wrap {
+
+
+  .multiform__next,
+  .multiform__prev {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600 !important;
+    font-size: 1.2em !important;
+  }
+}
+
+// -=-=-=-=-=- Popup Forms -=-=-=-=-=-
+
+html body .pum-container { 
+  border: none !important; 
+
+  .vc_column-inner h2 { margin-bottom: 30px !important; }
+  
+  .wpcf7 {
+
+    @media screen and ($desktop-only) {
+      padding: 0 2em !important;
+    }
+
+    .wpcf7-form-control:not(.wpcf7-submit) {
+      background-color: $white;
+      border: none !important;
+      border-bottom: 2px solid #ddd !important;
+      box-shadow: none !important;
+
+      &:focus {
+        border-bottom-color: $purple !important;
+        @include light-purple(background-color, 0.05);
+      }
+    }
+  }
+}
+
+// -=-=-=-=-=- Sidebar Contact Forms -=-=-=-=-=-
+
+.sidebar__contact-form {
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  background-color: #f3f2f7;
+
+  form.wpcf7-form .wpcf7-form-control:not(.wpcf7-submit) {
+    border: 2px solid #ccc !important;
+    background-color: $white !important;
+
+    &:focus {
+      border-color: $purple !important;
+      @include light-purple(background-color, 0.05);
+    }
+  }
+
+  form.wpcf7-form .wpcf7-form-control.wpcf7-submit[type="submit"] { width: 100% !important; }
+}

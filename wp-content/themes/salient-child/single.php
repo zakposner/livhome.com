@@ -213,7 +213,7 @@ endwhile; endif;
 			if($blog_type == 'std-blog-fullwidth' || $hide_sidebar == '1'){
 				echo '<div class="post-area col '.$std_minimal_class.' span_12 col_last">';
 			} else {
-				echo '<div class="post-area col '.$std_minimal_class.' span_9">';
+				echo '<div class="post-area col '.$std_minimal_class.' span_8">';
 			}
 			
 				 if(have_posts()) : while(have_posts()) : the_post(); 
@@ -248,56 +248,46 @@ endwhile; endif;
 									echo '</div>'; ?>
 							</div>
 						<?php } 
-						
-				    if($theme_skin != 'ascend') {
-							
-						if( !empty($options['author_bio']) && $options['author_bio'] == true){ 
-							$grav_size = 80;
-							$fw_class = null; 
-							$has_tags = 'false';
-							
-							if(!empty($options['display_tags']) && $options['display_tags'] == true && has_tag()) { $has_tags = 'true'; }
-							
-						?>
-							
-							<div id="author-bio" class="<?php echo $fw_class; ?>" data-has-tags="<?php echo $has_tags; ?>">
-								<div class="span_12">
-									<?php if (function_exists('get_avatar')) { echo get_avatar( get_the_author_meta('email'), $grav_size, null, get_the_author() ); }?>
-									<div id="author-info">
-										<h3><span><?php if(!empty($options['theme-skin']) && $options['theme-skin'] == 'ascend') { _e('Author', NECTAR_THEME_NAME); } else if(!empty($options['theme-skin']) && $options['theme-skin'] != 'material') { _e('About', NECTAR_THEME_NAME); } ?></span> 
-											
-											<?php if(!empty($options['theme-skin']) && $options['theme-skin'] == 'material') { echo '<a href="'. get_author_posts_url(get_the_author_meta( 'ID' )).'">'; }
-											echo get_the_author(); 
-											if(!empty($options['theme-skin']) && $options['theme-skin'] == 'material') { echo '</a>'; } ?></h3>
-										
-										<p><?php the_author_meta('description'); ?></p>
-									</div>
-									<?php if(!empty($options['theme-skin']) && $options['theme-skin'] == 'ascend'){ echo '<a href="'. get_author_posts_url(get_the_author_meta( 'ID' )).'" data-hover-text-color-override="#fff" data-hover-color-override="false" data-color-override="#000000" class="nectar-button see-through-2 large"> '. __("More posts by",NECTAR_THEME_NAME) . ' ' .get_the_author().' </a>'; } ?>
-									<div class="clear"></div>
-								</div>
-							</div>
-							
-					<?php } 
 					
-					if($theme_skin != 'material') { ?>
+						if($theme_skin != 'material') { ?>
 
-					<div class="comments-section">
-						   <?php comments_template(); ?>
-					 </div>   
+							<?php if( !empty($options['author_bio']) && $options['author_bio'] == true && $theme_skin == 'ascend'){ 
+								$grav_size = 80;
+								$fw_class = 'full-width-section '; 
+								$next_post = get_previous_post();
+								$next_post_button = (!empty($options['blog_next_post_link']) && $options['blog_next_post_link'] == '1') ? 'on' : 'off';
+							?>
+								
+								<div id="author-bio" class="<?php if(empty($next_post) || $next_post_button == 'off' || $fullscreen_header == false && $next_post_button == 'off') echo 'no-pagination'; ?>">
+									<div class="span_12">
+										<?php if (function_exists('get_avatar')) { echo get_avatar( get_the_author_meta('email'), $grav_size,  null, get_the_author() ); }?>
+										<div id="author-info">
+											<h3><span><?php if(!empty($options['theme-skin']) && $options['theme-skin'] == 'ascend') {  echo '<i>' . __('Author', NECTAR_THEME_NAME) . '</i>'; } else { _e('About', NECTAR_THEME_NAME); } ?></span> <?php the_author(); ?></h3>
+											<p><?php the_author_meta('description'); ?></p>
+										</div>
+										<?php if(!empty($options['theme-skin']) && $options['theme-skin'] == 'ascend'){ echo '<a href="'. get_author_posts_url(get_the_author_meta( 'ID' )).'" data-hover-text-color-override="#fff" data-hover-color-override="false" data-color-override="#000000" class="nectar-button see-through-2 large">' . __("More posts by",NECTAR_THEME_NAME) . ' ' . get_the_author().' </a>'; } ?>
+										<div class="clear"></div>
+									</div>
+								</div>
+				 
+							<?php } ?>
 
+						<div class="comments-section">
+							<?php comments_template(); ?>
+					 	</div>
 
-				<?php } 
-			
-			} ?>
-
-			
+				<?php } ?>
 
 
 			</div><!--/span_9-->
 			
 			<?php if($blog_type != 'std-blog-fullwidth' && $hide_sidebar != '1') { ?>
 				
-				<div id="sidebar" data-nectar-ss="<?php echo $enable_ss; ?>" class="col span_3 col_last">
+				<div id="sidebar" data-nectar-ss="<?php echo $enable_ss; ?>" class="col span_4 col_last">
+
+					<!-- Custom Related Posts -->
+					<?php include 'custom-related-posts.php' ?>
+
 					<?php get_sidebar(); ?>
 				</div><!--/sidebar-->
 				
@@ -306,70 +296,15 @@ endwhile; endif;
 			
 			
 		</div><!--/row-->
-
 		
 
 		<!--ascend only author/comment positioning-->
 		<div class="row">
-
-			<?php if($theme_skin == 'ascend' && $fullscreen_header == true ) { ?>
-
-			<div id="single-below-header" class="<?php echo $fullscreen_class; ?> custom-skip">
-				<?php if($blog_social_style != 'fixed_bottom_right') { ?>
-					<span class="meta-share-count"><i class="icon-default-style steadysets-icon-share"></i> <?php echo '<a href=""><span class="share-count-total">0</span> <span class="plural">'. __('Shares',NECTAR_THEME_NAME) . '</span> <span class="singular">'. __('Share',NECTAR_THEME_NAME) .'</span> </a>'; nectar_blog_social_sharing(); ?> </span>
-				<?php } else { ?>
-					<span class="meta-love"><span class="n-shortcode"> <?php echo nectar_love('return'); ?>  </span></span>
-				<?php } ?>
-				<span class="meta-category"><i class="icon-default-style steadysets-icon-book2"></i> <?php the_category(', '); ?></span>
-				<span class="meta-comment-count"><i class="icon-default-style steadysets-icon-chat-3"></i> <a class="comments-link" href="<?php comments_link(); ?>"><?php comments_number( __('No Comments', NECTAR_THEME_NAME), __('One Comment ', NECTAR_THEME_NAME), __('% Comments', NECTAR_THEME_NAME) ); ?></a></span>
-			</div><!--/single-below-header-->
-
-			<?php }
-
-			if($theme_skin == 'ascend' || $theme_skin == 'material') {
-				
-			nectar_next_post_display(); 
-			nectar_related_post_display();
-			
-		} ?>
-
-			<?php if( !empty($options['author_bio']) && $options['author_bio'] == true && $theme_skin == 'ascend'){ 
-						$grav_size = 80;
-						$fw_class = 'full-width-section '; 
-						$next_post = get_previous_post();
-						$next_post_button = (!empty($options['blog_next_post_link']) && $options['blog_next_post_link'] == '1') ? 'on' : 'off';
-					?>
-						
-						<div id="author-bio" class="<?php echo $fw_class; if(empty($next_post) || $next_post_button == 'off' || $fullscreen_header == false && $next_post_button == 'off') echo 'no-pagination'; ?>">
-							<div class="span_12">
-								<?php if (function_exists('get_avatar')) { echo get_avatar( get_the_author_meta('email'), $grav_size,  null, get_the_author() ); }?>
-								<div id="author-info">
-									<h3><span><?php if(!empty($options['theme-skin']) && $options['theme-skin'] == 'ascend') {  echo '<i>' . __('Author', NECTAR_THEME_NAME) . '</i>'; } else { _e('About', NECTAR_THEME_NAME); } ?></span> <?php the_author(); ?></h3>
-									<p><?php the_author_meta('description'); ?></p>
-								</div>
-								<?php if(!empty($options['theme-skin']) && $options['theme-skin'] == 'ascend'){ echo '<a href="'. get_author_posts_url(get_the_author_meta( 'ID' )).'" data-hover-text-color-override="#fff" data-hover-color-override="false" data-color-override="#000000" class="nectar-button see-through-2 large">' . __("More posts by",NECTAR_THEME_NAME) . ' ' . get_the_author().' </a>'; } ?>
-								<div class="clear"></div>
-							</div>
-						</div>
- 
-			 <?php } ?>
-
-
-			  <?php if($theme_skin == 'ascend' || $theme_skin == 'material') { ?>
-
-			 	 <div class="comments-section" data-author-bio="<?php if(!empty($options['author_bio']) && $options['author_bio'] == true) { echo 'true'; } else { echo 'false'; } ?>">
-					   <?php comments_template(); ?>
-				 </div>   
-
-			 <?php } ?>
-
+			<?php if($theme_skin == 'ascend' || $theme_skin == 'material') {
+			 		nectar_next_post_display(); 
+					nectar_related_post_display();
+			} ?>
 		</div>
-
-
-	   <?php if($theme_skin != 'ascend' && $theme_skin != 'material') { 
-			 nectar_next_post_display();
-			 nectar_related_post_display();
-		 } ?>
 		
 	</div><!--/container-->
 

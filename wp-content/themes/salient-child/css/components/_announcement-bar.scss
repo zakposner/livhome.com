@@ -1,0 +1,112 @@
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Announcement Bar
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+.lh-announcement-bar { 
+  display: none;
+  background: $abar-bg;
+  font-size: $abar-font-size;
+
+  .container {
+
+    @media screen and ($desktop-only) {
+      @include display-flexbox;
+      @include align-items(center);
+      @include justify-content(center);
+
+      // remove container float clears while in flex mode
+      &::after,
+      &::before { display: none; }
+    }
+
+    @media screen and (max-width: 690px) {
+      max-width: 350px !important;
+    }
+  }
+
+  // Text Content
+  p {
+    color: $white;
+    line-height: 1.25;
+    padding: 0;
+
+    @media screen and ($desktop-only) {
+      margin-right: 30px;
+    }
+
+    a { color: $white !important; }
+  }
+
+  // Action Buttons
+  .lh-announcement__buttons {
+
+    a {
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+
+      button.btn {
+        @include lh-transition(background-color);
+        border-radius: 0 !important;
+        border: none;
+        padding: 12px;
+        font-size: $abar-font-size;
+        font-weight: $font-weight-bold;
+        cursor: pointer;
+      }
+    }
+
+    a:first-child button.btn {
+      background-color: $abar-cta-2-bg;
+      margin-right: 16px;
+
+      &:hover { background-color: darken($abar-cta-2-bg, 10%); }
+    }
+
+    a:last-child button.btn {
+      background-color: $abar-cta-2-bg;
+
+      &:hover { background-color: darken($abar-cta-2-bg, 10%); }
+    }
+  }
+
+  // Announcement bar close
+  .fa-close {
+    color: $white !important;
+    position: absolute;
+    right: 0;
+    z-index: 500;
+    cursor: pointer;
+
+    // vertical centering
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  @media screen and ($mobile-only) {
+    p { margin-bottom: 10px; }
+
+    // p,
+    // .lh-announcement__buttons { text-align: center; }
+  }
+}
+
+// Open State
+#header-outer.lh-announcement-bar-active {
+  padding-top: 0 !important;
+
+  .lh-announcement-bar {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    margin-bottom: 26px;
+
+    @media screen and ($mobile-only) {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+// Close State
+#header-outer:not(.lh-announcement-bar-active) .lh-announcement-bar { display: none !important; }

@@ -25,10 +25,13 @@
 
 <?php if(!empty($options['google-analytics'])) echo $options['google-analytics']; ?> 
 
+<script type="text/javascript"> _linkedin_data_partner_id = "26246"; </script><script type="text/javascript"> (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})(); </script> 
+<noscript> <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=26246&fmt=gif" /> </noscript>
+
 </head>
 
 <!-- Hotjar Tracking Code for https://www.livhome.com/ -->
-<script>
+<!-- <script>
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
         h._hjSettings={hjid:738490,hjsv:6};
@@ -37,11 +40,42 @@
         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
+</script> -->
 
 <?php
  global $post; 
  global $woocommerce; 
+
+ // =========================================
+ // Custom Announcement Bar
+ // =========================================
+
+ /**
+  * @var {bool} turn on and off the announcement bar
+  */
+ $lh_announcement_active = true;
+
+ /**
+  * @var {string} the content for the announcement bar
+  */
+ $lh_announcement_content = 'LivHOME and Arosa Unite with Bain Capital Double Impact. <a href="https://www.livhome.com/wp-content/uploads/2018/10/2018-10-09_Arosa-LivHome_Double_Impact_Release.pdf" target="_blank" rel="nofollow" style="text-decoration: underline;">Learn more.</a>';
+
+  /**
+  * @var {string} the text for the announcement bar buttons
+  */
+ $lh_announcement_cta_1 = 'Partner With Us';
+ $lh_announcement_cta_2 = 'Join Our Team';
+
+ /**
+  * @var {string} the links for the announcement bar buttons
+  */
+ $lh_announcement_href_1 = '/partnerships';
+ $lh_announcement_href_2 = '/careers';
+
+ /**
+  * @var {string} the class for resizing the header when we havee an active announcement bar
+  */
+ $lh_announcement_class = ( $lh_announcement_active == true ? 'lh-announcement-bar-active' : '' );
 
 
 //check if parallax nectar slider is being used
@@ -182,7 +216,26 @@ if($perm_trans != 1 || $perm_trans == 1 && $bg_header == 'false' || $page_full_s
 		}
 	}
 ?>
+
 <div id="header-outer" data-has-menu="<?php echo $has_main_menu; ?>" <?php echo $transparency_markup; ?> data-using-pr-menu="<?php echo $using_pr_menu; ?>" data-mobile-fixed="<?php echo $mobile_fixed; ?>" data-ptnm="<?php echo $prependTopNavMobile;?>" data-lhe="<?php echo $headerLinkHoverEffect; ?>" data-user-set-bg="<?php echo $userSetBG; ?>" data-format="<?php echo $headerFormat; ?>" data-permanent-transparent="<?php echo $perm_trans; ?>" data-megamenu-rt="<?php echo $megamenuRemoveTransparent; ?>" data-remove-fixed="<?php echo $headerRemoveStickiness; ?>" data-cart="<?php echo ($woocommerce && !empty($options['enable-cart']) && $options['enable-cart'] == '1') ? 'true': 'false';?>" data-transparency-option="<?php if($disable_effect == 'on') { echo '0'; } else { echo $using_fw_slider; } ?>" data-box-shadow="<?php echo $header_box_shadow; ?>" data-shrink-num="<?php echo (!empty($options['header-resize-on-scroll-shrink-num'])) ? $options['header-resize-on-scroll-shrink-num'] : 6; ?>" data-full-width="<?php echo $fullWidthHeader; ?>" data-using-secondary="<?php echo ($using_secondary == 'header_with_secondary') ? '1' : '0'; ?>" data-using-logo="<?php if(!empty($options['use-logo'])) echo $options['use-logo']; ?>" data-logo-height="<?php if(!empty($options['logo-height'])) echo $options['logo-height']; ?>" data-m-logo-height="<?php if(!empty($options['mobile-logo-height'])) { echo $options['mobile-logo-height']; } else { echo '24'; } ?>" data-padding="<?php echo (!empty($options['header-padding'])) ? $options['header-padding'] : "28"; ?>" data-header-resize="<?php echo $headerResize; ?>">
+
+	<!-- ANNOUNCEMENT BAR (Home Page Only) -->
+	<?php if ( $lh_announcement_active && is_front_page() ): ?>
+		<div class="lh-announcement-bar">
+			<div class="container">
+				<p class="lh-announcement"><?php echo trim($lh_announcement_content) ?></p>
+				<div class="lh-announcement__buttons">
+					<a href="<?php echo $lh_announcement_href_2 ?>">
+						<button class="btn"><?php echo $lh_announcement_cta_2 ?></button>
+					</a>
+					<a href="<?php echo $lh_announcement_href_1 ?>">
+						<button class="btn"><?php echo $lh_announcement_cta_1 ?></button>
+					</a>			
+				</div>
+			</div>
+			<i class="fa fa-close"></i>
+		</div>	
+	<?php endif ?>
 	
 	<?php if(empty($options['theme-skin'])) { 
 		get_template_part('includes/header-search'); 

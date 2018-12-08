@@ -1,0 +1,89 @@
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Page: #home
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* === Hero Image Text === */
+
+.rev-primary .cta-primary,
+.rev-primary .cta-secondary,
+.rev-connect .cta-primary {
+    line-height: 46px !important;
+}
+
+.rev-primary p,
+.rev-connect p {
+    color: #404041 !important;
+    font-size: 22px !important;
+    font-weight: 300 !important;
+    line-height: 1.6 !important;
+}
+
+/* === Mobile Hero Image Text === */
+
+.rev-mobile-slide {
+    background-color: #f6f5f5;
+    padding: 35px 10px 35px 10px;
+    text-align: center;
+}
+
+/*  PHONES ONLY */
+@media screen and (max-width: 567px) {
+  /* pad the content */
+  .rev-connect-mobile p {
+    padding: 0 20px;
+  }
+  /* stack & center the cta's */
+  .rev-primary-mobile .button-box button {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 1001px) {
+  .livhome-mobile-only { display: none !important; } // 
+}
+
+/* PHONES AND TABLETS */
+@media only screen and (max-width: 1000px) {
+
+  .livhome-desktop-only { display: none !important; }
+
+  /* Hide the normal slide ctas */
+  .rev-primary,
+  .rev-connect {
+    visibility: hidden;
+  }
+  .rev-primary h2,
+  .rev-connect h2 {
+    padding-bottom: 15px;
+  }
+  .rev-primary-mobile h1 {
+    /*font-size: 19px !important;
+    line-height: 32px !important;*/
+  }
+  .rev-primary-mobile p,
+  .rev-connect-mobile p {
+    margin-bottom: 3rem; /* default was 1.5em */
+  }
+  .rev-primary-mobile .cta-primary,
+  .rev-connect-mobile .cta-primary {
+    width: 100%;
+    margin-bottom: 30px !important;
+  }
+  /* Hide arrows */
+  #rev_slider_2_1 .tparrows {
+    display: none !important;
+  }
+}
+
+/* TABLETS ONLY */
+@media screen and (min-width: 650px) {
+  /* bring the mobile slide text into the center */
+  .rev-mobile-slide p {
+    padding: 0 40px;
+  }
+  .rev-primary-mobile .cta-primary,
+  .rev-connect-mobile .cta-primary {
+    width: 80%;
+  }
+}

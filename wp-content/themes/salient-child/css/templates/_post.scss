@@ -1,0 +1,52 @@
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Posts
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+body.single .blog-title #single-meta { display: none; }
+
+body.single .heading-title {
+  margin-bottom: $breadcrumb-spacing !important;
+  padding-bottom: $breadcrumb-spacing !important;
+
+  // Actual title text
+  .entry-title {
+    font-family: 'Open Sans' !important;
+    font-size: 37px !important;
+    font-weight: $font-weight-bold !important;
+    margin-bottom: $header-spacing !important;
+
+    // full width titles
+    max-width: 100% !important;
+
+    @media screen and ($mobile-only) {
+      font-size: 28px !important;
+    }
+  }
+}
+
+body.single {
+
+  // breadies
+  p#breadcrumbs {
+    font-size: $breadcrumbs-font-size !important;
+  }
+
+  // custom related posts
+  .custom-related-post {
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .container-wrap {
+
+    .comment-wrap,
+    #author-bio { border: none !important; }
+
+    #author-bio {
+      padding-top: 0 !important;
+
+      #author-info { width: 100% !important; }
+    }
+  }    
+
+}

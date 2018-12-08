@@ -1,0 +1,79 @@
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Navigation
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+header#top .col.span_9 ul.sf-menu li.menu-item > a { cursor: pointer !important; }
+
+// header tel link
+header#top .sf-menu > .menu-item a[href*='tel'] {
+  font-size: 21px !important;
+  color: $purple !important;
+  font-weight: $font-weight-bold !important;
+}
+
+// // mobile nav
+// #slide-out-widget-area .inner .off-canvas-menu-container {
+// 	ul.menu {
+//     // padding-left: 20px !important;
+
+// 		li.menu-item {
+
+//             >a {
+//                 @include lh-transition;
+//                 padding: 5% 0 !important;
+//                 font-size: 30px !important;
+//                 color: $purple !important;
+//                 line-height: 1 !important;
+//                 // text-align: left !important;
+
+//                 &:hover {
+//                     background: $purple !important;
+//                     color: $white !important;
+//                 }
+//             }
+
+// 		}
+// 	}
+// }
+
+// Mobile Slideout Nav
+html body #slide-out-widget-area .off-canvas-menu-container.mobile-only {
+    margin-top: 40px !important;
+
+    a { text-decoration: none !important; }
+
+    // Menu Items
+    li.menu-item > a {
+        font-size: 1.25em !important;
+        line-height: 1.75 !important;
+
+        &[href*='tel'] { color: $purple !important; }
+    }
+
+    // Menu Item dropdown Arrows
+    .ocm-dropdown-arrow i { font-size: 28px !important; }
+    
+}
+
+html body #slide-out-widget-area .slide_out_area_close .icon-default-style[class^="icon-"] {
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Header
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+.lh-header-call-link {
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    z-index: 2000;
+    @include prefix(transform, translateY(-50%));
+
+    i.fa-phone {
+        color: $purple;
+        font-size: 25px;
+        line-height: 25px;
+    }
+}
